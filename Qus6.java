@@ -5,20 +5,25 @@ public class Qus6
 {
     public static void main(String[] args) 
 	{
-		Scanner scanner = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         System.out.print("Enter a string: ");
-        String str = scanner.nextLine();
-
-		for(int i=0;i<=str.length()-1;i++)
+        String input = sc.nextLine();
+        String reversed = reverseString(input);
+        System.out.println("Reversed string: " + reversed);
+    }
+    public static String reverseString(String input) 
+	{
+        char[] chars = input.toCharArray();
+        int left = 0;
+        int right = input.length() - 1;
+        while (left < right)
 		{
-			System.out.print(str.charAt(i));
-		}
-		System.out.println("");
-		
-		for(int i = str.length() - 1; i >= 0; --i)
-		{
-			System.out.print(str.charAt(i)); 
-		}
+            char temp = chars[left];
+            chars[left] = chars[right];
+            chars[right] = temp;
+            left++;
+            right--;
+        }
+        return new String(chars);
 	}
 }
-

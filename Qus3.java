@@ -5,24 +5,38 @@ public class Qus3
 {
     public static void main(String[] args) 
 	{
-		Scanner sc = new Scanner(System.in);
-		System.out.println("enter three digit number:- ");
-		int num = sc.nextInt();
-        int  originalnum, remainder, result = 0;
-        originalnum = num;
-        while (originalnum != 0)
-        {
-            remainder = originalnum % 10;
-            result += Math.pow(remainder, 3);
-            originalnum /= 10;
-        }
-        if(result == num)
+		Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        int number = scanner.nextInt();
+        scanner.close();
+
+		int originalNumber = number;
+        int numDigits = 0;
+        int sum = 0;
+        while (number > 0) 
 		{
-            System.out.println(num + " is an Armstrong number.");
+            numDigits++;
+            number /= 10;
         }
-		else
+        number = originalNumber;
+        while (number > 0) 
 		{
-            System.out.println(num + " is not an Armstrong number.");
-		}
-	}
-}	
+            int digit = number % 10;
+            int powerOfDigit = 1;
+            for (int i = 0; i < numDigits; i++) 
+			{
+                powerOfDigit *= digit;
+            }
+            sum += powerOfDigit;
+            number /= 10;
+        }
+        if (originalNumber == sum) 
+		{
+            System.out.println(originalNumber + " is an Armstrong number.");
+        } 
+		else 
+		{
+            System.out.println(originalNumber + " is not an Armstrong number.");
+        }
+    }
+}
